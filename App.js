@@ -1,20 +1,61 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  SafeAreaView,
+  TouchableHighlight,
+  Button,
+  Alert,
+} from "react-native";
+import {
+  useDimensions,
+  useDeviceOrientation,
+} from "@react-native-community/hooks";
 
 export default function App() {
+  console.log(useDeviceOrientation());
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView style={styles.container}>
+      <Button
+        title="Follow the white Rabbit!"
+        color="orange"
+        onPress={() =>
+          Alert.alert("Matrix", "Choose a pill", [
+            { text: "Red", onPress: () => alert("Back to normal") },
+            {
+              text: "Blue",
+              onPress: () => alert("Back to human life in real world"),
+            },
+          ])
+        }
+      />
+      <View
+        style={{ backgroundColor: "dodgerblue", width: "100%", height: "30%" }}
+      ></View>
+
+      <Text>Success Back to Hello World!</Text>
+      <TouchableHighlight onPress={() => console.log("image tabbed")}>
+        <Image
+          blurRadius={1}
+          source={{
+            width: 200,
+            height: 300,
+            uri: "https://picsum.photos/200/300",
+          }}
+        />
+      </TouchableHighlight>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#ffffff",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
